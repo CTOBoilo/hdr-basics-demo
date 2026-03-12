@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HDR Gain Map</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>HDR Gain Map</h1>
+    <p class="subtitle">
+      These photographs contain embedded gain maps. On an HDR display, the
+      highlights will exceed reference white (203 nits), and the page background
+      will appear grey by comparison.
+    </p>
+  </header>
+
+  <div class="notice">
+    Best viewed on an HDR display in Chrome, Edge, or Safari.
+  </div>
+
+  <main>
+    <div class="imageGrid">
+      <img src="images/photo1-hdr.jpg" alt="Photo 1 — HDR Gain Map"
+           onerror="this.outerHTML='<div class=\'placeholder\'>photo1-hdr.jpg</div>'">
+      <img src="images/photo2-hdr.jpg" alt="Photo 2 — HDR Gain Map"
+           onerror="this.outerHTML='<div class=\'placeholder\'>photo2-hdr.jpg</div>'">
+      <img src="images/photo3-hdr.jpg" alt="Photo 3 — HDR Gain Map"
+           onerror="this.outerHTML='<div class=\'placeholder\'>photo3-hdr.jpg</div>'">
+      <img src="images/photo4-hdr.jpg" alt="Photo 4 — HDR Gain Map"
+           onerror="this.outerHTML='<div class=\'placeholder\'>photo4-hdr.jpg</div>'">
+    </div>
+  </main>
+
+  <footer>
+    HDR Gain Map Demo &mdash; Understanding and Seeing in HDR
+  </footer>
+</body>
+</html>

@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+header {
+  padding: 3rem 2rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+header p.subtitle {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #888;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notice {
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.8rem;
+  color: #aaa;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+main {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 2rem 3rem;
+}
+
+/* --- Single-column grid (Site 2 & Site 3) --- */
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.imageGrid img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Two-column comparison (Site 1) --- */
+
+.comparisonGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.comparisonColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.comparisonColumn h2 {
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #999;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.comparisonColumn img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Placeholder styling (remove once real images are in) --- */
+
+.placeholder {
+  background-color: #f5f5f5;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: #ccc;
+  border: 1px dashed #ddd;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.75rem;
+  color: #bbb;
+  margin-top: 3rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* --- Gain map preview (Site 4) --- */
+
+.dropZone {
+  border: 2px dashed #ccc;
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  margin-bottom: 2rem;
+}
+
+.dropZone.dragover {
+  border-color: #888;
+  background-color: #fafafa;
+}
+
+.dropZone p {
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+.dropZone input[type="file"] {
+  display: none;
+}
+
+.previewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 100%;
+}
+
+.previewRow {
+  margin-bottom: 3rem;
+}
+
+.previewPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.previewPanel h2 {
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #999;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.previewPanel img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.previewError {
+  text-align: center;
+  color: #c44;
+  font-size: 0.85rem;
+  padding: 1rem;
+}
+
+.previewHidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .comparisonGrid,
+  .previewGrid {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+}

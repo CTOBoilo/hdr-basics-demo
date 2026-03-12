@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDR vs HDR Comparison</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>SDR vs HDR Comparison</h1>
+    <p class="subtitle">
+      The same photographs displayed side by side. On an HDR display, notice how
+      the gain map images on the right push highlights beyond reference white,
+      making the page background appear grey by comparison.
+    </p>
+  </header>
+
+  <div class="notice">
+    Best viewed on an HDR display in Chrome, Edge, or Safari.
+  </div>
+
+  <main>
+    <div class="comparisonGrid">
+
+      <div class="comparisonColumn">
+        <h2>SDR</h2>
+        <img src="images/photo1-sdr.jpg" alt="Photo 1 — SDR"
+             onerror="this.outerHTML='<div class=\'placeholder\'>photo1-sdr.jpg</div>'">
+        <img src="images/photo2-sdr.jpg" alt="Photo 2 — SDR"
+             onerror="this.outerHTML='<div class=\'placeholder\'>photo2-sdr.jpg</div>'">
+        <img src="images/photo3-sdr.jpg" alt="Photo 3 — SDR"
+             onerror="this.outerHTML='<div class=\'placeholder\'>photo3-sdr.jpg</div>'">
+        <img src="images/photo4-sdr.jpg" alt="Photo 4 — SDR"
+             onerror="this.outerHTML='<div class=\'placeholder\'>photo4-sdr.jpg</div>'">
+      </div>
+
+      <div class="comparisonColumn">
+        <h2>HDR Gain Map</h2>
+        <img src="images/photo1-hdr.jpg" alt="Photo 1 — HDR Gain Map"
+             onerror="this.outerHTML='<div class=\'placeholder\'>photo1-hdr.jpg</div>'">
+        <img src="images/photo2-hdr.jpg" alt="Photo 2 — HDR Gain Map"
+             onerror="this.outerHTML='<div class=\'placeholder\'>photo2-hdr.jpg</div>'">
+        <img src="images/photo3-hdr.jpg" alt="Photo 3 — HDR Gain Map"
+             onerror="this.outerHTML='<div class=\'placeholder\'>photo3-hdr.jpg</div>'">
+        <img src="images/photo4-hdr.jpg" alt="Photo 4 — HDR Gain Map"
+             onerror="this.outerHTML='<div class=\'placeholder\'>photo4-hdr.jpg</div>'">
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    HDR Gain Map Demo &mdash; Understanding and Seeing in HDR
+  </footer>
+</body>
+</html>

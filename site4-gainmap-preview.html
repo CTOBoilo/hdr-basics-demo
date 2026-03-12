@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gain Map Preview</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Gain Map Preview</h1>
+    <p class="subtitle">
+      Each gain map JPEG contains a hidden secondary image — the gain map layer.
+      It tells the display where and how much to boost brightness beyond
+      reference white. Here they are, extracted and exposed.
+    </p>
+  </header>
+
+  <div class="notice">
+    Left: SDR base image. Center: the gain map layer hidden inside the file.
+    Right: the full file rendered natively by the browser (HDR on supported displays).
+  </div>
+
+  <main id="gallery" style="max-width: none; padding: 2rem 1.5rem;"></main>
+
+  <footer>
+    HDR Gain Map Demo &mdash; Understanding and Seeing in HDR
+  </footer>
+
+  <script src="MPFExtractor.js"></script>
+  <script>
+    var photos = [
+      "images/photo1-hdr.jpg",
+      "images/photo2-hdr.jpg",
+      "images/photo3-hdr.jpg",
+      "images/photo4-hdr.jpg"
+    ];
+
+    var gallery = document.getElementById("gallery");
+
+    photos.forEach(function (src, index) {
+      var row = document.createElement("div");
+      row.className = "previewGrid previewRow";
+
+      var sdrPanel = createPanel("SDR Base");
+      var gainPanel = createPanel("Gain Map Layer");
+      var hdrPanel = createPanel("HDR Rendering");
+
+      row.appendChild(sdrPanel.container);
+      row.appendChild(gainPanel.container);
+      row.appendChild(hdrPanel.container);
+      gallery.appendChild(row);
+
+      fetch(src)
+        .then(function (response) {
+          if (!response.ok) {
+            row.innerHTML = '<p class="previewError">Could not load ' + src + '</p>';
+            return;
+          }
+          return response.arrayBuffer();
+        })
+        .then(function (arrayBuffer) {
+          if (!arrayBuffer) return;
+
+          var hdrBlob = new Blob([arrayBuffer], { type: "image/jpeg" });
+          hdrPanel.img.src = URL.createObjectURL(hdrBlob);
+
+          var extractor = new MPFExtractor();
+          return extractor.extract(arrayBuffer, {
+            extractFII: true,
+            extractNonFII: true
+          });
+        })
+        .then(function (images) {
+          if (!images) return;
+
+          if (images.length >= 2) {
+            sdrPanel.img.src = images[0].src;
+            gainPanel.img.src = images[1].src;
+          } else {
+            sdrPanel.img.src = hdrPanel.img.src;
+            gainPanel.container.innerHTML =
+              '<h2>Gain Map Layer</h2>' +
+              '<p class="previewError">No gain map found in this file</p>';
+          }
+        })
+        .catch(function (err) {
+          gainPanel.container.innerHTML =
+            '<h2>Gain Map Layer</h2>' +
+            '<p class="previewError">' + err + '</p>';
+          sdrPanel.img.src = hdrPanel.img.src;
+        });
+    });
+
+    function createPanel(label) {
+      var container = document.createElement("div");
+      container.className = "previewPanel";
+
+      var heading = document.createElement("h2");
+      heading.textContent = label;
+      container.appendChild(heading);
+
+      var img = document.createElement("img");
+      img.alt = label;
+      container.appendChild(img);
+
+      return { container: container, img: img };
+    }
+  </script>
+</body>
+</html>
